@@ -1,3 +1,22 @@
+x.argmin()  # x数组最小值的索引
+x.argmax()  # x数组最大值的索引
+
+#逻辑运算
+np.all()
+np.any()
+
+#计算数组沿指定轴的中位数 
+np.median(y, axis=0) 
+
+#扁平
+a = np.array([[1, 2, 3], [4, 5, 6]])
+a.ravel()
+Out[]: array([1, 2, 3, 4, 5, 6])
+
+
+
+-----------------------------------------------------------------------------------
+
 #question: For a given animal find frequency of all the attributes 
 #DATA
 #class_id  animal_id    attributes
