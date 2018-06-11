@@ -126,3 +126,19 @@ for row in data.iterrows():
         
  --------------------------------------------------------------------------
 
+'''按条件转换值，清洗重新赋予值'''
+
+#将class列的versicolor转换成Iris-versicolor
+iris_data.loc[iris_data['class'] == 'versicolor', 'class'] = 'Iris-versicolor'
+iris_data.loc[iris_data['class'] == 'Iris-setossa', 'class'] = 'Iris-setosa'
+
+#利用字典转换
+os_type_mapping = {'h5':'H5','android':'Android','ios':'IOS'}
+f = lambda x : os_type_mapping.get(x,x)
+userInfor31_32.os_type = userInfor31_32.os_type.map(f)
+
+#筛选
+iris_data = iris_data.loc[(iris_data['class'] != 'Iris-setosa') | (iris_data['sepal_width_cm'] >= 2.5)]
+
+iris_data.loc[(iris_data['class'] == 'Iris-versicolor') & (iris_data['sepal_length_cm'] < 1.0)]
+
