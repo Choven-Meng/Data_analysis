@@ -6,7 +6,7 @@
  s.issubset(t) #判断s是否是t的子集  
  s.issuperset(t) #判断s是否是t的超集  
  s.union(t)    #返回s和t的并集  
- s.intersection  #返回s和t的交集  
+ s.intersection(t)  #返回s和t的交集  
  s.difference(t)    #返回s与t的差集  
  s.symmetric_difference(t)    #返回异或集  
  s.copy()    #返回s的一个浅拷贝  
@@ -52,3 +52,6 @@ np.linspace(2.0,3.0,num=5)
 
 <img class=""  data-src="https://mmbiz.qpic.cn/mmbiz_png/ldSjzkNDxll0yx0LAoz4Wib0As3P9gs1lQW0zvChlNDdTPuicgvS1K7Rtyibx6ic7w4DMRJPRrfPIiaMd5yUWlv9orw/640?wx_fmt=png" data-type="png" data-w="463" height="662.25pt" style="width: 80% !important; height: auto !important; visibility: visible !important;" width="347.25pt" _width="80%" src="https://mmbiz.qpic.cn/mmbiz_png/ldSjzkNDxll0yx0LAoz4Wib0As3P9gs1lQW0zvChlNDdTPuicgvS1K7Rtyibx6ic7w4DMRJPRrfPIiaMd5yUWlv9orw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" data-fail="0">
 
+
+### 多维列表合并  
+list3=np.concatenate((list1,list2),axis=1)    #按列合并
