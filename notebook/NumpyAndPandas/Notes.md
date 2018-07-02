@@ -55,3 +55,9 @@ np.linspace(2.0,3.0,num=5)
 
 ### 多维列表合并  
 list3=np.concatenate((list1,list2),axis=1)    #按列合并
+
+### numpy
+
+```
+np.nonzero(data[]==da) #获得索引位置
+```
