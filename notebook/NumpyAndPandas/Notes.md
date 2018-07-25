@@ -56,9 +56,62 @@ np.linspace(2.0,3.0,num=5)
 ### 多维列表合并  
 list3=np.concatenate((list1,list2),axis=1)    #按列合并
 
-### numpy
+### numpy获得索引位置
 
 ```
-np.nonzero(data[col]==da) #获得索引位置
+np.nonzero(data[col]==da) #获得索引位置，返回col列值为da的所有位置组成的np数组
 # output:    (array([0, 2, 4], dtype=int64),)
 ```
+-----------------------------------
+
+### 按条件转换值，清洗重新赋予值
+
+```
+#将class列的versicolor转换成Iris-versicolor
+iris_data.loc[iris_data['class'] == 'versicolor', 'class'] = 'Iris-versicolor'
+iris_data.loc[iris_data['class'] == 'Iris-setossa', 'class'] = 'Iris-setosa'
+```
+
+```
+#利用字典转换
+os_type_mapping = {'h5':'H5','android':'Android','ios':'IOS'}
+f = lambda x : os_type_mapping.get(x,x)
+userInfor31_32.os_type = userInfor31_32.os_type.map(f)
+```
+
+```
+# 利用transform转换
+@data
+   a  b  c  d  e
+li    1  2  3  4  5
+chen  2  1  1  2  2
+wang  1  2  3  4  5
+zhao  2  1  1  2  2
+qian  1  2  3  4  5
+
+# data里每个元素位置的取值由transform函数的参数函数计算
+data.group(['ss','kk','kk','ss','ss']).ransform(np.mean) # data里每个位置元素取对应分组列的均值
+
+```
+
+### 筛选
+
+```
+iris_data = iris_data.loc[(iris_data['class'] != 'Iris-setosa') | (iris_data['sepal_width_cm'] >= 2.5)]
+
+iris_data.loc[(iris_data['class'] == 'Iris-versicolor') & (iris_data['sepal_length_cm'] < 1.0)]
+```
+------------------
+
+### 将一维转换为二维
+
+```
+>>> a = np.array((1,2,3))
+>>> b = np.array((2,3,4))
+>>> np.column_stack((a,b))
+array([[1, 2],
+       [2, 3],
+       [3, 4]])
+```
+
+
