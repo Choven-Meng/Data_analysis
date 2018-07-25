@@ -123,4 +123,13 @@ array([[1, 2],
        [3, 4]])
 ```
 
+---------------
 
+### 窗函数
+
+窗函数（window function）经常用在频域信号分析中  
+```
+df = pd.DataFrame({'B': [0, 1, 2, np.nan, 4]})
+df.rolling(2).sum()
+#output:    B    NaN     1.0      3.0        NaN           NaN
+```
