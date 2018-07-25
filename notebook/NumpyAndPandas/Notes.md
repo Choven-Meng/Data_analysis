@@ -59,5 +59,6 @@ list3=np.concatenate((list1,list2),axis=1)    #按列合并
 ### numpy
 
 ```
-np.nonzero(data[]==da) #获得索引位置
+np.nonzero(data[col]==da) #获得索引位置
+# output:    (array([0, 2, 4], dtype=int64),)
 ```
