@@ -56,12 +56,21 @@ np.linspace(2.0,3.0,num=5)
 ### 多维列表合并  
 list3=np.concatenate((list1,list2),axis=1)    #按列合并
 
-### numpy获得索引位置
+-----------------------
+
+### 获得索引位置
 
 ```
 np.nonzero(data[col]==da) #获得索引位置，返回col列值为da的所有位置组成的np数组
 # output:    (array([0, 2, 4], dtype=int64),)
 ```
+
+```
+# 返回最小值索引位置
+np.argmin(a,axis = None/0/1)
+```
+
+
 -----------------------------------
 
 ### 按条件转换值，清洗重新赋予值
