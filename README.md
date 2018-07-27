@@ -1,13 +1,7 @@
 # Data_analysis
 
-### set集合
+### 字符串
 
-* 必须是set集合
+[字符串与字符数据（上）](https://mp.weixin.qq.com/s?src=11&timestamp=1532656122&ver=1023&signature=5eSYmrZlKAAG3dCOLSNtngg87KtuwrKztGegdpjCnVUiFCon5uM35F8X1g1VtBsTptpcrgHovIRpA0vl91BfsPhIyaVBhAWcmzhmtmjR*4-Oj7iF*DUjts1CXGCYE8m6&new=1)
 
-> s.issubset(t) #判断s是否是t的子集  
-> s.issuperset(t) #判断s是否是t的超集  
-> s.union(t)    #返回s和t的并集  
-> s.intersection  #返回s和t的交集  
-> s.difference(t)    #返回s与t的差集  
-> s.symmetric_difference(t)    #返回异或集  
-> s.copy()    #返回s的一个浅拷贝  
+[字符串与字符数据（下）](https://mp.weixin.qq.com/s?src=11&timestamp=1532656122&ver=1023&signature=5eSYmrZlKAAG3dCOLSNtngg87KtuwrKztGegdpjCnVWEvKvXoOaqgEd*4AoA1dnsOCD2hWV2tGNuBht9RPL4w83wMa-O1g2gyMPjVaxtdlw9xlgpY*EUfipgQJ4v-dML&new=1)
