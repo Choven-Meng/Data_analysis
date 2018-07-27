@@ -110,6 +110,20 @@ iris_data = iris_data.loc[(iris_data['class'] != 'Iris-setosa') | (iris_data['se
 
 iris_data.loc[(iris_data['class'] == 'Iris-versicolor') & (iris_data['sepal_length_cm'] < 1.0)]
 ```
+
+```
+ #逻辑运算
+ # 筛选出df列表中comments列种小于等于10000大于等于1000的值
+df[(df.comments>=1000) & (df.comments<=10000)]
+```
+
+#### 字符串匹配
+
+```
+#字符匹配
+# df列表中title列中的值包含‘台电’的数据
+df[df.title.str.contains('台电', na=False)]
+```
 ------------------
 
 ### 将一维转换为二维
