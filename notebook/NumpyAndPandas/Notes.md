@@ -108,6 +108,12 @@ data.group(['ss','kk','kk','ss','ss']).ransform(np.mean) # data里每个位置�
 
 ```
 
+```
+# re 模块
+ pattern = re.compile(r'</?\w+[^>]*>', re.S)  # 匹配特殊字符
+ comment = re.sub(pattern, '', comment)   # 将匹配的特殊字符转化为空值
+```
+
 ### 筛选
 
 ```
