@@ -152,3 +152,28 @@ df = pd.DataFrame({'B': [0, 1, 2, np.nan, 4]})
 df.rolling(2).sum()
 #output:    B    NaN     1.0      3.0        NaN           NaN
 ```
+
+-------------------
+
+### 时间模块datetime
+
+```
+# 将时间格式转化为日期格式（保留日期去掉时间）
+data['交易时间'] = pd.to_datetime(data['交易时间']).dt.normalize()
+```
+```
+# 将字符串转换为时间格式
+datetime.datetime.strptime(x, "%Y-%m-%d %H:%M:%S")
+
+# 今天的日期
+today = datetime.date.today()
+
+# 上月的日期
+from  dateutil.relativedelta import relativedelta
+T_M = datetime.date.today() - relativedelta(months=+1)
+
+# 昨天的日期(T)
+T = (today + datetime.timedelta(days=-1)).strftime('%Y-%m-%d') # 得到的是字符串
+T = datetime.datetime.strptime(T, "%Y-%m-%d")
+T = T.date() # 获得日期格式的日期
+```
