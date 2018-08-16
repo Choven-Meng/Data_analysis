@@ -128,13 +128,34 @@ iris_data.loc[(iris_data['class'] == 'Iris-versicolor') & (iris_data['sepal_leng
 df[(df.comments>=1000) & (df.comments<=10000)]
 ```
 
-#### 字符串匹配
+#### 字符串匹配 | 模糊匹配
 
 ```
 #字符匹配
 # df列表中title列中的值包含‘台电’的数据
 df[df.title.str.contains('台电', na=False)]
 ```
+
+```
+# 去掉手机版本，保留手机型号
+if data['手机型号'][i].find('iPhone') != -1:
+    data['手机型号'][i] = data['手机型号'][i].replace(data['手机型号'][i],'iPhone')
+```
+
+```
+# 正则表达式，根据user_input匹配列表collection中的字符串，并按照匹配长度和起始位置进行排序并返回
+import re
+def fuzzyfinder(user_input, collection):
+    suggestions = []
+    pattern = '.*?'.join(user_input)    # Converts 'djm' to 'd.*?j.*?m'
+    regex = re.compile(pattern)         # Compiles a regex.
+    for item in collection:
+        match = regex.search(item)      # Checks if the current item matches the regex.
+        if match:
+            suggestions.append((len(match.group()), match.start(), item))
+    return [x for _, _, x in sorted(suggestions)]
+```
+
 ------------------
 
 ### 将一维转换为二维
