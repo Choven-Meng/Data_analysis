@@ -37,6 +37,34 @@ result=list(filter(lambda x:x>2,seq))
 
 -----------------------------------------------------------------------------
 
+### 查找list中出现次数最多的元素  
+
+给定一个包含多个元素的list，让你查找其中出现次数最多的元素，我们介绍了两种方法，其中第一种是利用max()函数的key参数，第二种则是使用Counter。 
+
+```
+a = [1,3,4,2,5,2,4,1,3,2,4]
+max(set(a),key=a.count)
+# a.count(2) # 返回列表a中2的数目
+```
+```
+from collections import Counter
+cnt = Counter(a)
+print(cnt) # 返回一个字典：Counter({1: 2, 3: 2, 4: 3, 2: 3, 5: 1})
+
+print(cnt.most_common()) #返回一个列表：[(4, 3), (2, 3), (1, 2), (3, 2), (5, 1)]
+```
+
+--------------------------------------------------------------------------------
+
+### list中最小值和最大值所以
+
+def maxIndex(lst):
+    return max(range(len(lst)),key=lst.__getitem__)
+    
+def maxIndex(lst):
+    return min(range(len(lst)),key=lst.__getitem__)
+--------------------------------------------------------------------------------
+
 ### Arange 和Linspace函数生成数组
 
 arange()函数按照指定的步长返回一个等差数列。初开始和结束值之外，还可以自定义步长和数据类型。  
