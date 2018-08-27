@@ -1,5 +1,4 @@
-**sql 模糊搜索**
-
+### sql 模糊搜索
 
 在进行数据库查询时，有完整查询和模糊查询之分。
 
@@ -72,3 +71,5 @@ end function
 ```
 sql = "select * from zipcode where (address like'%" & zipcode_key & "%') or (city like'%" & zipcode_key & "%') or (province like'%" & zipcode_key & "%') order by province,city,address
 ```
+
+
