@@ -232,3 +232,27 @@ T = (today + datetime.timedelta(days=-1)).strftime('%Y-%m-%d') # 得到的是字
 T = datetime.datetime.strptime(T, "%Y-%m-%d")
 T = T.date() # 获得日期格式的日期
 ```
+
+---------------------------------
+
+### np.vectorize()
+
+跟 map（）很类似
+
+```
+import numpy as np 
+def myfunc(a, b):
+    'Return a-b if a>b, otherwise return a+b'
+    if a>b:
+        return a-b
+    else:
+        return a+b
+
+vfunc = np.vectorize(myfunc)
+
+print vfunc([1, 2, 3, 4], 2)
+#[3 4 1 2]
+
+---------------------
+
+```
