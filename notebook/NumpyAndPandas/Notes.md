@@ -57,12 +57,13 @@ print(cnt.most_common()) #返回一个列表：[(4, 3), (2, 3), (1, 2), (3, 2), 
 --------------------------------------------------------------------------------
 
 ### list中最小值和最大值所以
-
+```
 def maxIndex(lst):
     return max(range(len(lst)),key=lst.__getitem__)
     
 def maxIndex(lst):
     return min(range(len(lst)),key=lst.__getitem__)
+```
 --------------------------------------------------------------------------------
 
 ### Arange 和Linspace函数生成数组
@@ -142,6 +143,18 @@ data.group(['ss','kk','kk','ss','ss']).ransform(np.mean) # data里每个位置�
  comment = re.sub(pattern, '', comment)   # 将匹配的特殊字符转化为空值
 ```
 
+#### 根据某一列的数据转换另一列的数据  
+
+如：对每一行，FirstCab的值为空时，Weight的值乘以0.8
+```
+### 
+
+
+方法一：df.loc[df['FirstCab'].isnull(),'Weight'] *= 0.8
+
+方法二：df['Weight'] = np.where(df['FirstCab'].isnull(),df['Weight']*0.8,df['Weight'])
+```
+
 ### 筛选
 
 ```
@@ -184,6 +197,14 @@ def fuzzyfinder(user_input, collection):
     return [x for _, _, x in sorted(suggestions)]
 ```
 
+提取数字：
+```
+#提取Ticket列末尾的数字，之后需要比较大小
+#Ticket列的值如：A/5. 2151 或者PP 9549 或者 333223或者LINE，提取末尾的数字，没有则返回NaN
+
+df['NumTic']= df['Ticket'].str.extract('(\d{3,8})',expand=False).astype(float)
+
+```
 ------------------
 
 ### 将一维转换为二维
@@ -253,6 +274,8 @@ vfunc = np.vectorize(myfunc)
 print vfunc([1, 2, 3, 4], 2)
 #[3 4 1 2]
 
+```
+
 ---------------------
 
-```
+
