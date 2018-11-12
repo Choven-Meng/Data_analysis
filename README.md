@@ -59,3 +59,14 @@ def findnum(string):
         list_num.append(item)
     return list_num
 ```
+
+判断字符串中是否有中文：  
+```
+zhPattern = re.compile('[\u4e00-\u9fa5]+')
+#判断一段文本中是否包含简体中：
+match = zhPattern.search(str)
+if match:
+    print("有中文")
+else:
+    print("没有中文")
+```
