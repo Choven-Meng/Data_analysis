@@ -7,7 +7,7 @@
 
 * 必须是set集合
 
-```
+``` python
  s.issubset(t) #判断s是否是t的子集  
  s.issuperset(t) #判断s是否是t的超集  
  s.union(t)    #返回s和t的并集  
@@ -20,64 +20,51 @@
 
 ### Map和Filter函数
 
-map()函数接收一个列表和一个函数，它对列表里的每个元素调用一个函数进行处理，再将结果放进一个心列表里。  
-下面这个例子，map()函数遍历seq中没饿过元素，把它乘以2，再把结果放入一个新列表，最后返回这个列表：  
-```
+map()函数接收一个列表和一个函数，它对列表里的每个元素调用一个函数进行处理，再将结果放进一个新列表里。    
+``` python
 seq = [1,2,3,4,5]  
 result=list(map(lambda var:var*2,seq))  
 #output: [2,4,6,8,10]
 ```
 
 filter()函数略有不同，它接收一个列表和一个规则函数，在对列表里的每个元素调用这个规则函数之后，它把所有返回值为假的元素从列表中剔除，返回过滤后的子列表。  
-```
+``` python
 seq=[1,2,3,4,5]  
 result=list(filter(lambda x:x>2,seq))  
 #output:[3,4,5]
 ```
-
 -----------------------------------------------------------------------------
 
 ### 查找list中出现次数最多的元素  
 
-给定一个包含多个元素的list，让你查找其中出现次数最多的元素，我们介绍了两种方法，其中第一种是利用max()函数的key参数，第二种则是使用Counter。 
+ * max() 函数
 
-```
+``` python
 a = [1,3,4,2,5,2,4,1,3,2,4]
 max(set(a),key=a.count)
 # a.count(2) # 返回列表a中2的数目
 ```
-```
+ * Count
+ 
+``` python
 from collections import Counter
 cnt = Counter(a)
 print(cnt) # 返回一个字典：Counter({1: 2, 3: 2, 4: 3, 2: 3, 5: 1})
 
 print(cnt.most_common()) #返回一个列表：[(4, 3), (2, 3), (1, 2), (3, 2), (5, 1)]
 ```
-
---------------------------------------------------------------------------------
-
-### list中最小值和最大值所以
-```
-def maxIndex(lst):
-    return max(range(len(lst)),key=lst.__getitem__)
-    
-def maxIndex(lst):
-    return min(range(len(lst)),key=lst.__getitem__)
-```
 --------------------------------------------------------------------------------
 
 ### Arange 和Linspace函数生成数组
 
-arange()函数按照指定的步长返回一个等差数列。初开始和结束值之外，还可以自定义步长和数据类型。  
-```
+* arange()函数按照指定的步长返回一个等差数列。初开始和结束值之外，还可以自定义步长和数据类型。  
+``` python
 np.arange(3,7,2)  
 #output:arange([3,5])  
 ```
 
-linspace()返回的是将给定区间进行若干等分以后的等分点组成的数列。传入的参数包括开始值、结束值和具体多少等分。linspace()将这个区间等分后，把开始值、
-结束值和每个等分点都放进一个numpy数组里。  
-
-```
+* linspace()返回的是将给定区间进行若干等分以后的等分点组成的数列。传入的参数包括开始值、结束值和具体多少等分。
+``` python
 np.linspace(2.0,3.0,num=5)  
 #output:array([2.0,2.25,2.5,2.75,3.0])
 ```
@@ -94,36 +81,32 @@ list3=np.concatenate((list1,list2),axis=1)    #按列合并
 
 ### 获得索引位置
 
-```
-np.nonzero(data[col]==da) #获得索引位置，返回col列值为da的所有位置组成的np数组
+* 所以位置索引列表
+``` python
+np.nonzero(data[col]==da) 
 # output:    (array([0, 2, 4], dtype=int64),)
 ```
-
-```
-# 返回最小值索引位置
+* 最小值索引位置
+``` python
 np.argmin(a,axis = None/0/1)
 ```
-
-
 -----------------------------------
 
 ### 按条件转换值，清洗重新赋予值
 
-```
-#将class列的versicolor转换成Iris-versicolor
+* 按照条件筛选，直接赋值
+``` python
 iris_data.loc[iris_data['class'] == 'versicolor', 'class'] = 'Iris-versicolor'
 iris_data.loc[iris_data['class'] == 'Iris-setossa', 'class'] = 'Iris-setosa'
 ```
-
-```
-#利用字典转换
+* 利用字典转换
+``` python
 os_type_mapping = {'h5':'H5','android':'Android','ios':'IOS'}
 f = lambda x : os_type_mapping.get(x,x)
 userInfor31_32.os_type = userInfor31_32.os_type.map(f)
 ```
-
-```
-# 利用transform转换
+* 利用transform转换
+``` python
 @data
    a  b  c  d  e
 li    1  2  3  4  5
@@ -136,23 +119,22 @@ qian  1  2  3  4  5
 data.group(['ss','kk','kk','ss','ss']).ransform(np.mean) # data里每个位置元素取对应分组列的均值
 
 ```
-
-```
-# re 模块
+* re 模块
+``` python
  pattern = re.compile(r'</?\w+[^>]*>', re.S)  # 匹配特殊字符
  comment = re.sub(pattern, '', comment)   # 将匹配的特殊字符转化为空值
 ```
 
 #### 根据某一列的数据转换另一列的数据  
 
-如：对每一行，FirstCab的值为空时，Weight的值乘以0.8
+* loc()函数
+``` python
+#对每一行，FirstCab的值为空时，Weight的值乘以0.8
+df.loc[df['FirstCab'].isnull(),'Weight'] *= 0.8
 ```
-### 
-
-
-方法一：df.loc[df['FirstCab'].isnull(),'Weight'] *= 0.8
-
-方法二：df['Weight'] = np.where(df['FirstCab'].isnull(),df['Weight']*0.8,df['Weight'])
+* np.where()函数
+``` python
+f['Weight'] = np.where(df['FirstCab'].isnull(),df['Weight']*0.8,df['Weight'])
 ```
 
 ### 筛选
