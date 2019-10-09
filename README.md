@@ -16,4 +16,4 @@
   
 ### [NoteBook](notebook)
 
-  * [Numpy and Pandas]()
+  * [Numpy and Pandas](notebook/NumpyAndPandas/Notes.md)
