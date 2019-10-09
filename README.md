@@ -6,14 +6,14 @@
 
 ### [可视化](data_visual)
 
-### [数据库](Data_analysis/SQL)
+### [数据库](SQL)
   
-  * [postgreSQL](Data_analysis/SQL/postgreSQL.md)
+  * [postgreSQL](SQL/postgreSQL.md)
 
-### [操作Excel](Data_analysis/Excel)
+### [操作Excel](Excel)
   
-  * [xlwings](Data_analysis/Excel/xlwings)
+  * [xlwings](Excel/xlwings)
   
-### [NoteBook](Data_analysis/notebook)
+### [NoteBook](notebook)
 
   * [Numpy and Pandas]()
