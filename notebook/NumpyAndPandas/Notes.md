@@ -89,6 +89,9 @@ np.nonzero(data[col]==da)
 * 最小值索引位置
 ``` python
 np.argmin(a,axis = None/0/1)
+
+x.argmin()  # x数组最小值的索引
+x.argmax()  # x数组最大值的索引
 ```
 -----------------------------------
 
@@ -139,13 +142,13 @@ f['Weight'] = np.where(df['FirstCab'].isnull(),df['Weight']*0.8,df['Weight'])
 
 ### 筛选
 
-```
+``` python
 iris_data = iris_data.loc[(iris_data['class'] != 'Iris-setosa') | (iris_data['sepal_width_cm'] >= 2.5)]
 
 iris_data.loc[(iris_data['class'] == 'Iris-versicolor') & (iris_data['sepal_length_cm'] < 1.0)]
 ```
 
-```
+``` python
  #逻辑运算
  # 筛选出df列表中comments列种小于等于10000大于等于1000的值
 df[(df.comments>=1000) & (df.comments<=10000)]
@@ -153,20 +156,21 @@ df[(df.comments>=1000) & (df.comments<=10000)]
 
 #### 字符串匹配 | 模糊匹配
 
-```
+* str.contains()函数
+``` python
 #字符匹配
 # df列表中title列中的值包含‘台电’的数据
 df[df.title.str.contains('台电', na=False)]
 ```
-
-```
+* find()函数
+``` python
 # 去掉手机版本，保留手机型号
 if data['手机型号'][i].find('iPhone') != -1:
     data['手机型号'][i] = data['手机型号'][i].replace(data['手机型号'][i],'iPhone')
 ```
-
-```
-# 正则表达式，根据user_input匹配列表collection中的字符串，并按照匹配长度和起始位置进行排序并返回
+* 正则表达式
+``` python
+# 根据user_input匹配列表collection中的字符串，并按照匹配长度和起始位置进行排序并返回
 import re
 def fuzzyfinder(user_input, collection):
     suggestions = []
@@ -179,8 +183,8 @@ def fuzzyfinder(user_input, collection):
     return [x for _, _, x in sorted(suggestions)]
 ```
 
-提取数字：
-```
+* 提取数字
+``` python
 #提取Ticket列末尾的数字，之后需要比较大小
 #Ticket列的值如：A/5. 2151 或者PP 9549 或者 333223或者LINE，提取末尾的数字，没有则返回NaN
 
@@ -191,7 +195,7 @@ df['NumTic']= df['Ticket'].str.extract('(\d{3,8})',expand=False).astype(float)
 
 ### 将一维转换为二维
 
-```
+``` python
 >>> a = np.array((1,2,3))
 >>> b = np.array((2,3,4))
 >>> np.column_stack((a,b))
@@ -199,27 +203,25 @@ array([[1, 2],
        [2, 3],
        [3, 4]])
 ```
-
 ---------------
 
 ### 窗函数
 
-窗函数（window function）经常用在频域信号分析中  
-```
+* 窗函数（window function）经常用在频域信号分析中  
+``` python
 df = pd.DataFrame({'B': [0, 1, 2, np.nan, 4]})
 df.rolling(2).sum()
 #output:    B    NaN     1.0      3.0        NaN           NaN
 ```
-
 -------------------
 
 ### 时间模块datetime
 
-```
+``` python
 # 将时间格式转化为日期格式（保留日期去掉时间）
 data['交易时间'] = pd.to_datetime(data['交易时间']).dt.normalize()
 ```
-```
+``` python 
 # 将字符串转换为时间格式
 datetime.datetime.strptime(x, "%Y-%m-%d %H:%M:%S")
 
@@ -235,29 +237,26 @@ T = (today + datetime.timedelta(days=-1)).strftime('%Y-%m-%d') # 得到的是字
 T = datetime.datetime.strptime(T, "%Y-%m-%d")
 T = T.date() # 获得日期格式的日期
 ```
-
 ---------------------------------
 
-### np.vectorize()
+### groupby() 聚合函数
 
-跟 map（）很类似
+* groupby().agg()
+``` python
+#In: df 
+ a      b     c
+ 1  [1, 2, 3] foo
+ 1  [2, 5]    bar
+ 2  [5, 6]    baz
+
+df.groupby('a').agg({'b': 'sum', 'c': lambda x: ' '.join(x)})
+
+#Out:    
+       c           b
+ a                          
+ 1  foo bar  [1, 2, 3, 2, 5]
+ 2  baz      [5, 6]
+```
+``` python
 
 ```
-import numpy as np 
-def myfunc(a, b):
-    'Return a-b if a>b, otherwise return a+b'
-    if a>b:
-        return a-b
-    else:
-        return a+b
-
-vfunc = np.vectorize(myfunc)
-
-print vfunc([1, 2, 3, 4], 2)
-#[3 4 1 2]
-
-```
-
----------------------
-
-
